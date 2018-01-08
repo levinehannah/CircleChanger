@@ -196,7 +196,7 @@ class CircleChanger(object):
             :type point: rg.Point
         """
         ################################################################
-        # TODO: 3.
+        # DONE: 3.
         #   First, READ the doc-string (specification) above.
         #   Second, READ the   run_test_get_distance_from   function
         #   (below).  Third, implement and test this method.
@@ -205,6 +205,9 @@ class CircleChanger(object):
         #   of the    rg.Point     class to compute this distance.
         #   NO CREDIT if you use the distance formula here.
         ################################################################
+
+        return point.get_distance_from(self.circle.center)
+
 
     def swell_or_shrink_once(self, amount_to_swell_or_shrink):
         """
@@ -241,7 +244,7 @@ class CircleChanger(object):
             :type amount_to_swell_or_shrink: int
         """
         ################################################################
-        # TODO: 4.
+        # DONE: 4.
         #   First, READ the doc-string (specification) above.
         #   Second, READ the   run_test_swell_or_shrink_once   function
         #   (below).  Third, implement and test this method.
@@ -269,6 +272,13 @@ class CircleChanger(object):
         #   Simply   ** ASK FOR HELP **
         #            if this does not make sense to you.
         ################################################################
+        if self.circle.radius + amount_to_swell_or_shrink < 1:
+            self.circle.radius = 1
+        else:
+            self.circle.radius += amount_to_swell_or_shrink
+        self.circle.outline_thickness = random.randrange(3, 16)
+        r_index = random.randrange(0, len(self.colors))
+        self.circle.fill_color = self.colors[r_index]
 
     def swell_or_shrink_repeatedly(self,
                                    amount_to_swell_or_shrink,
